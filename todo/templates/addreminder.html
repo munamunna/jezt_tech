@@ -1,0 +1,10 @@
+{%extends 'dash.html'%}
+
+{%block addremindersblock%}<h1>Add Reminder</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Reminder</button>
+</form>
+
+{%endblock%}

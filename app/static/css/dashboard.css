@@ -147,7 +147,12 @@ body {
 	}
 }
 
-
+.todolink {
+	
+	margin-left: 40px;
+	color: white;
+	text-decoration: none;
+}
 
 
 /** --------------------------------

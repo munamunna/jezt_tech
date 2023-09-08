@@ -16,8 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todo',  # Your 'todo' app
-    'app',   # Your 'app' app
+    'todo',  
+    'app',   
 ]
 
 MIDDLEWARE = [
@@ -86,3 +86,23 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static_root'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# settings.py
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Replace with your Redis server details
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+# Other Celery settings (e.g., timezone)
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
+
+
+
+
+
+
+
+

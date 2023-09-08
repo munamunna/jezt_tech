@@ -1,0 +1,39 @@
+{%extends 'dash.html'%}
+
+{%block todosblock%}
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <table class="table table-striped text-white">
+            <tr class="text-white">
+                <th>Task</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            {%for t in tasks%}
+            <tr>
+                <td>
+                    {{t.title}}
+                </td>
+                <td>
+                    {{t.user}}
+                </td>
+                <td>
+                    {{t.status}}
+                </td>
+                <td>{{t.created_date}}</td>
+
+                <td>
+                    <a href="" class="btn btn-outline-info">View</a>
+                    
+                </td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div class="col-2"></div>
+</div>
+{%endblock%}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ToDoItem
+from .models import ToDoItem,Reminder
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -24,3 +24,13 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model=ToDoItem
         fields=["title"]
+
+
+# forms.py
+
+
+
+class ReminderForm(forms.ModelForm):
+    class Meta:
+        model = Reminder
+        fields = ['time','todo_item']
