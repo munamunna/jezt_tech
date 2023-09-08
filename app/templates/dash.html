@@ -1,5 +1,5 @@
 {%load static%}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,7 @@
 
  
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/weather.css' %}">
 </head>
 <body>
     
@@ -35,8 +36,13 @@
           <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
           <i class="fa fa-search position-absolute d-block fs-6"></i>
         </div>
-      
+        <a href="http://127.0.0.1:8000/todo/all/">list all todos</a>
         <ul class="categories list-unstyled">
+            <li class="">
+                <i class="uil-list"></i>
+                <a href="http://127.0.0.1:8000/todo/all/">Go to Todo List</a>
+                
+            </li>
           <li class="has-dropdown">
             <i class="uil-estate fa-fw"></i><a href="#"> Dashboard</a>
             <ul class="sidebar-dropdown list-unstyled">
@@ -47,6 +53,7 @@
               <li><a href="#">ipsum dolor sit</a></li>
             </ul>
           </li>
+          
           <li class="">
             <i class="uil-folder"></i><a href="#"> File manager</a>
           </li>
@@ -159,12 +166,26 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="uil-bell"></i><span>98</span></a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#">
-                    <!-- <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i> -->
+                    
                     <i data-show="show-side-navigation1" class="fa-solid fa-bars show-side-btn" ></i>
                   </a>
-                </li>
+                </li> -->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="sidebarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i data-show="show-side-navigation1" class="fa-solid fa-bars show-side-btn"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="sidebarDropdown">
+                      <!-- Add your dropdown items here -->
+                      <li><a class="dropdown-item" href="#">Item 1</a></li>
+                      <li><a class="dropdown-item" href="#">Item 2</a></li>
+                      <li><a class="dropdown-item" href="#">Item 3</a></li>
+                      <!-- Add more items as needed -->
+                    </ul>
+                  </li>
+                  
               </ul>
             </div>
           </div>
@@ -193,6 +214,8 @@
                   </div>
                 </div>
               </div>
+              
+
               <div class="col-lg-4">
                 <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
                   <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
@@ -363,10 +386,75 @@
               </div>
             </div>
           </section>
+
+
+
+          <!-- weather section -->
+          <div class="p-4">
+            <div class="welcome">
+              <div class="content rounded-3 p-3">
+                <h1 class="fs-3"></h1>
+                
+              </div>
+            </div>
+          <div class="weatherapp">
+            <div class="container" id="id_result">
+                <h3 class="brand">the Weather</h3>
+                <div>
+                    <h1 class="temp">16&#176;</h1>
+                    <div class="city-time">
+                        <h1 class="name">London</h1>
+                        <small>
+                            <span class="time">06:09</span>
+                            <span class="date">Monday Sep 19</span>
+                        </small>
+                    </div>
+                    <div class="weather" id="id_resultt">
+                        <img src="./weather/64x64/day/113.png" alt="" width="50" height="50">
+                        <span class="condition">Cloudy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <form id="locationInput">
+                    <input type="text" class="search" placeholder="search Location..." id="id_city">
+                
+                <button type="submit" class="submit"><i class="fas fa-search" onclick="fetchweather()" ></i></button>
+            </form>
+            <ul class="cities">
+                <!-- <li class="city">New York</li>
+                <li class="city">California</li>
+                <li class="city">Paris</li>
+                <li class="city">Tokyo</li> -->
+            </ul>
+            <ul class="details"id="id_resulttt">
+                <h4>Weather Details</h4>
+                <li>
+                    <span>Cloudy</span>
+                    <span class="cloud">89%</span>
+                </li>
+                <li>
+                    <span>Humidity</span>
+                    <span class="humidity">64%</span>
+                </li>
+                <li>
+                    <span>Wind</span>
+                    <div class="wind">8km/h</div>
+                </li>
+            </ul>
+                
+            </div>
+    
+        </div>
         </div>
       </section>
+
       
       
+      
+      
+  
+       
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     

@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app import views
-
+from django.urls import include
+# from app import views
+# from todo import views as todo_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+    # path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+    # path('todos/', todo_views.ToDoListView.as_view(), name='todo_list'),
+    # path('todos/add/', todo_views.ToDoCreateView.as_view(), name='todo_create'),
+    # path('login/',todo_views.SigninView.as_view(),name="signin"),
+     # Your other URL patterns
+    path('todo/', include('todo.urls')),  # Include the 'todo' app's URLs
+    path('dashboard/', include('app.urls')),  # Include the 'dashboard' app's URLs
+    
 ]
