@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
-        <table class="table table-striped text-white">
-            <tr class="text-white">
+        <table class="table table-striped">
+            <tr class="">
                 <th>Task</th>
                 <th>User</th>
                 <th>Status</th>
@@ -35,5 +35,13 @@
         </table>
     </div>
     <div class="col-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-3">
+        <a href="{%url 'todo_create'%}" class="btn btn-outline-info">Add Todo</a>
+    </div>
+    <div class="col-4"></div>
 </div>
 {%endblock%}

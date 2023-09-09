@@ -26,7 +26,7 @@ class SignupView(CreateView):
     model=User
     form_class=RegistrationForm
     template_name="register.html"
-    success_url=reverse_lazy("login")
+    success_url=reverse_lazy("signin")
 
     def form_valid(self, form):
         messages.success(self.request,"account created")
@@ -54,14 +54,18 @@ class SigninView(View):
             if usr:
                 login(request,usr)
                 messages.success(request,"login success")
-                return redirect("todo_list")
+                return redirect("dashboard")
             messages.error(request,"invalid credential")
             return render(request,self.template_name,{"form":form})
 
+@method_decorator(signin_required,name="dispatch")
 class ToDoListView(ListView):
     model = ToDoItem
     template_name='todos.html'
     context_object_name = 'tasks'
+
+    def get_queryset(self) :
+        return ToDoItem.objects.filter(user=self.request.user).order_by("-created_date")
 
 
 @method_decorator(signin_required,name="dispatch")    
@@ -69,7 +73,7 @@ class ToDoCreateView(CreateView):
     model=ToDoItem
     form_class=TaskForm
     template_name="todo_add.html"
-    success_url=reverse_lazy("todo_create")
+    success_url=reverse_lazy("todo_list")
 
     #to add extra details in form before save
     def form_valid(self, form):
@@ -89,7 +93,7 @@ class ReminderCreateView(CreateView):
     model=Reminder
     form_class=ReminderForm
     template_name="addreminder.html"
-    success_url=reverse_lazy("reminder_create")
+    success_url=reverse_lazy("reminder_list")
 
     #to add extra details in form before save
     def form_valid(self, form):
@@ -100,12 +104,15 @@ class ReminderCreateView(CreateView):
         return super().form_valid(form)
 
 
- 
+@method_decorator(signin_required,name="dispatch")
 class ReminderListView(ListView):
     model = Reminder
     
     template_name='reminderslist.html'
     context_object_name = 'tasks'
+
+
+    
 
 # tasks.py
 from celery import shared_task

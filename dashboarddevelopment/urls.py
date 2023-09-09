@@ -24,7 +24,8 @@ urlpatterns = [
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('todos/', todo_views.ToDoListView.as_view(), name='todo_list'),
     path('todos/add/', todo_views.ToDoCreateView.as_view(), name='todo_create'),
-    path('login/',todo_views.SigninView.as_view(),name="signin"),
+    path('register/',todo_views.SignupView.as_view(),name="register"),
+    path('',todo_views.SigninView.as_view(),name="signin"),
    
     path('reminders/add/', todo_views.ReminderCreateView.as_view(), name='reminder_create'),
     path('reminders/', todo_views.ReminderListView.as_view(), name='reminder_list'),
