@@ -83,7 +83,7 @@ class ToDoCreateView(CreateView):
         return super().form_valid(form)
     
 
-    # ###### reminder section
+   
 
 
     
